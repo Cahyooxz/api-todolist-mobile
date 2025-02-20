@@ -16,7 +16,8 @@ class Todolist extends Model
         'judul',
         'deskripsi',
         'level_kegiatan',
-        'tanggal_deadline'
+        'tanggal_deadline',
+        'status'
     ];
 
 }

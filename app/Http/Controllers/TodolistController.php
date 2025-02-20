@@ -105,8 +105,8 @@ class TodolistController extends Controller
 
         return response()->json([
             'success' => 'true',
-            'data' => $todolist,
             'message' => 'Data berhasil diubah',
+            'data' => $todolist,
         ], 200);
     }
     public function destroy(Request $request, $id){
@@ -116,5 +116,19 @@ class TodolistController extends Controller
             'success' => 'true',
             'message' => 'Data berhasil terhapus',
         ], 200);
+    }
+    public function set_status(Request $request, $id){
+        $todolist = Todolist::findOrFail($id);
+
+        $data = [
+            'status' => $request->status
+        ];
+
+        $todolist->update($data);
+        return response()->json([
+            'success' => 'true',
+            'message' => 'Status berhasil diubah',
+            'data' => $todolist
+        ]);
     }
 }
